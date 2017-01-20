@@ -2,34 +2,34 @@ package com.company;
 
 public class solver {
 
-    public solver()
+    public static int last = 2;
+    public static int lastLast = 2;
+    public static int[] nums = new int[1000];
+    public static int fibonacci(int current, int n, int i)
     {
-
-    }
-
-    public static int fibonacci(int n, int f)
-    {
-        if(n == 0)
-        {
-            return 0;
-        }
-
-        else if(n == 1)
+        if(n == 1)
         {
             return 1;
         }
 
-        else
+        else if(current == n)
         {
-            return fibonacci(n - 1, f) + fibonacci(n - 2, f);
+            return 1;
         }
 
-    }
+        else if(current > n)
+        {
+            return 0;
+        }
+        else
+        {
+            nums[i] = current;
+            int diff = current - last;
+            lastLast = last;
+            last += diff;
+            return fibonacci(current + lastLast, n, i+1);
+        }
 
-    public static boolean found = false;
-    public static void test()
-    {
-        found = true;
     }
 
 }
